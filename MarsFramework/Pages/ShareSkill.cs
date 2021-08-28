@@ -130,11 +130,11 @@ namespace MarsFramework.Pages
         internal void EnterShareSkill()
         {
             ExcelLib.PopulateInCollection(ExcelPath, "ShareSkill");
-            Thread.Sleep(5000);
+            wait(5);
             //Click ShareSkill Button
             ShareSkillButton.Click();
             //title
-            Thread.Sleep(1000);
+            wait(5);
             Title.SendKeys(ExcelLib.ReadData(2, "Title"));
             //enter description
             Description.SendKeys(ExcelLib.ReadData(2, "Description"));
@@ -227,14 +227,14 @@ namespace MarsFramework.Pages
 
             ExcelLib.PopulateInCollection(ExcelPath, "ShareSkill");
             // Click on ManageListing
-            Thread.Sleep(5000);
+            wait(5);
             manageListingsLink.Click();
-            
-               //Click on Edit Button
-                Thread.Sleep(1000);
+
+            //Click on Edit Button
+            wait(5);
                 IWebElement edit = driver.FindElement(By.XPath("/html/body/div/div/div/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[2]/i"));
                 edit.Click();
-                Thread.Sleep(1000);
+                wait(5);
                 //edit title
                 Title.Clear();
                 Title.SendKeys(ExcelLib.ReadData(5, "Title"));

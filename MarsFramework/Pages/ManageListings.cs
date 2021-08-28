@@ -42,14 +42,14 @@ namespace MarsFramework.Pages
         {
             //Populate the Excel Sheet
             GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "ManageListings");
-            Thread.Sleep(1000);
+            wait(5);
             manageListingsLink.Click();
             string ExpectedValue = ExcelLib.ReadData(2, "Title");
-            Thread.Sleep(2000);
+            wait(5);
             string ActualValue = driver.FindElement(By.XPath("/html/body/div/div/div/div[2]/div[1]/div[1]/table/tbody/tr/td[3]")).Text;
             if(ExpectedValue == ActualValue)
             {
-                Thread.Sleep(1000);
+                wait(5);
                 driver.FindElement(By.XPath("/html/body/div/div/div/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[3]/i")).Click();
                 if(ExcelLib.ReadData(2, "DeleteAction")=="Yes")
                 {
