@@ -1,5 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using AutoIt;
+
 using static MarsFramework.Global.GlobalDefinitions;
 using static MarsFramework.Global.Base;
 using OpenQA.Selenium.Support.UI;
@@ -130,7 +132,7 @@ namespace MarsFramework.Pages
         internal void EnterShareSkill()
         {
             ExcelLib.PopulateInCollection(ExcelPath, "ShareSkill");
-            wait(5);
+            wait(10);
             //Click ShareSkill Button
             ShareSkillButton.Click();
             //title
@@ -176,9 +178,21 @@ namespace MarsFramework.Pages
                 CreditAmount.SendKeys(ExcelLib.ReadData(2, "Credit"));
                
             }
+
+            // work sample upload
+            IWebElement worksample = driver.FindElement(By.XPath("/html/body/div/div/div[1]/div[2]/div/form/div[9]/div/div[2]/section/div/label/div/span/i"));
+            worksample.Click();
+
+            Thread.Sleep(1000);
+            AutoIt.AutoItX.WinActivate("Open");
+           
+            AutoIt.AutoItX.Send(@"C:\Users\Jigar\Desktop\MVP\marsframework-master\SkillUpload.txt");
+            AutoIt.AutoItX.Send("{Enter}");
             
             //Select enable or disable your services
             radiobutton(ExcelLib.ReadData(2, "Active"), "Active", "Hidden", ActiveOption1, ActiveOption2);
+
+                
 
             //Click save button
             Save.Click();
